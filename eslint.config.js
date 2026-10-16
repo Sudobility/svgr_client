@@ -31,6 +31,8 @@ export default [
         clearInterval: "readonly",
         NodeJS: "readonly",
         fetch: "readonly",
+        btoa: "readonly",
+        atob: "readonly",
       },
     },
     plugins: {

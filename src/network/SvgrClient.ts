@@ -72,6 +72,33 @@ export interface RetryConfig {
 const DEFAULT_RETRYABLE_STATUSES = [408, 429, 500, 502, 503, 504];
 
 /**
+ * Build a {@link Blob} from an {@link ArrayBuffer} in a way that works on both
+ * the web and React Native.
+ *
+ * React Native's `Blob` implementation cannot be constructed from an
+ * `ArrayBuffer`/`ArrayBufferView` — `new Blob([arrayBuffer])` throws
+ * "Creating blobs from 'ArrayBuffer' and 'ArrayBufferView' are not supported".
+ * Routing the bytes through a `data:` URL avoids that: `fetch()` returns a
+ * proper platform `Blob` on every runtime. On the web this path is equivalent
+ * to the direct constructor.
+ */
+async function bufferToBlob(
+  buffer: ArrayBuffer,
+  mimeType: string,
+): Promise<Blob> {
+  const bytes = new Uint8Array(buffer);
+  // Chunked to avoid a call-stack overflow from spreading a large array.
+  let binary = "";
+  const chunkSize = 0x8000;
+  for (let i = 0; i < bytes.length; i += chunkSize) {
+    binary += String.fromCharCode(...bytes.subarray(i, i + chunkSize));
+  }
+  const dataUrl = `data:${mimeType};base64,${btoa(binary)}`;
+  const response = await fetch(dataUrl);
+  return response.blob();
+}
+
+/**
  * Error thrown when the SVGR API returns a non-successful HTTP response.
  *
  * Extends the built-in `Error` class with an HTTP `status` code property,
@@ -258,11 +285,16 @@ export class SvgrClient {
     file: File | { buffer: ArrayBuffer; filename: string; mimeType: string },
   ): Promise<BaseResponse<ImageUploadResult>> {
     const formData = new FormData();
-    if (file instanceof File) {
+    if (typeof File !== "undefined" && file instanceof File) {
       formData.append("image", file);
     } else {
-      const blob = new Blob([file.buffer], { type: file.mimeType });
-      formData.append("image", blob, file.filename);
+      const { buffer, mimeType, filename } = file as {
+        buffer: ArrayBuffer;
+        filename: string;
+        mimeType: string;
+      };
+      const blob = await bufferToBlob(buffer, mimeType);
+      formData.append("image", blob, filename);
     }
 
     const url = `${this.baseUrl}/api/v1/images/upload`;
