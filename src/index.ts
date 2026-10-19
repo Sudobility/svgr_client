@@ -19,6 +19,7 @@ export {
   SvgrApiError,
   type SvgrClientConfig,
   type RetryConfig,
+  type JobLiveHandlers,
 } from "./network/SvgrClient.js";
 
 // Hooks
@@ -26,6 +27,7 @@ export {
   useConvert,
   useUploadImage,
   useCreateJob,
+  useCancelJob,
   useJobStatus,
   useImageJobs,
   useUserImages,
@@ -45,6 +47,7 @@ export type {
   BaseResponse,
   CreateJobRequest,
   CreateJobResponse,
+  CancelJobResponse,
   ImageType,
   ImageUploadResult,
   ImageUploadResponse,

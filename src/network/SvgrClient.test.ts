@@ -259,6 +259,44 @@ describe("SvgrClient job methods", () => {
       ),
     ).toBe(true);
   });
+
+  it("POSTs to /jobs/:id/cancel and returns the cancelled job", async () => {
+    const mockResponse = {
+      success: true,
+      data: { jobId: "j1", status: "cancelled" },
+    };
+    mockNetwork.setMockResponse(
+      "http://localhost:3001/api/v1/jobs/j1/cancel",
+      { data: mockResponse, ok: true },
+      "POST",
+    );
+
+    const result = await client.cancelJob("j1");
+    expect(result.data?.status).toBe("cancelled");
+    expect(
+      mockNetwork.wasUrlCalled(
+        "http://localhost:3001/api/v1/jobs/j1/cancel",
+        "POST",
+      ),
+    ).toBe(true);
+  });
+
+  it("throws SvgrApiError when cancel fails", async () => {
+    mockNetwork.setMockResponse(
+      "http://localhost:3001/api/v1/jobs/j1/cancel",
+      { data: { error: "Job not found" }, ok: false, status: 404 },
+      "POST",
+    );
+    await expect(client.cancelJob("j1")).rejects.toThrow("Job not found");
+  });
+
+  it("subscribeJob is a safe no-op without getAuthToken", () => {
+    // No getAuthToken configured, so there is nothing to authenticate the
+    // socket with: subscribe must not throw and its unsubscribe must be safe.
+    const unsubscribe = client.subscribeJob("j1", { onJob: () => {} });
+    expect(typeof unsubscribe).toBe("function");
+    expect(() => unsubscribe()).not.toThrow();
+  });
 });
 
 describe("SvgrApiError", () => {

@@ -1,6 +1,6 @@
 {
   "name": "@sudobility/svgr_client",
-  "version": "1.0.53",
+  "version": "1.0.54",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -29,7 +29,7 @@
     "verify": "bun run typecheck && bun run lint && bun run test:unit && bun run build"
   },
   "dependencies": {
-    "@sudobility/svgr_types": "^1.0.31"
+    "@sudobility/svgr_types": "^1.0.32"
   },
   "peerDependencies": {
     "@sudobility/types": "^1.9.68",

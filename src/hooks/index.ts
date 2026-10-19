@@ -1,6 +1,7 @@
 export { useConvert } from "./useConvert.js";
 export { useUploadImage } from "./useUploadImage.js";
 export { useCreateJob } from "./useCreateJob.js";
+export { useCancelJob } from "./useCancelJob.js";
 export { useJobStatus } from "./useJobStatus.js";
 export { useImageJobs } from "./useImageJobs.js";
 export { useUserImages } from "./useUserImages.js";

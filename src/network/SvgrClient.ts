@@ -38,6 +38,26 @@ export interface SvgrClientConfig {
    * using exponential backoff.
    */
   retry?: RetryConfig;
+  /**
+   * Optional bearer-token provider for the live job WebSocket.
+   *
+   * A WebSocket (like the browser's `EventSource`) cannot send an
+   * `Authorization` header, so {@link SvgrClient.subscribeJob} authenticates
+   * in-band: it calls this on open and sends the returned token as the first
+   * message. Return a Firebase ID token, or the `nofb_` fallback id. When
+   * omitted, `subscribeJob` is a no-op and callers fall back to polling.
+   */
+  getAuthToken?: () => Promise<string | null>;
+}
+
+/** Handlers for a {@link SvgrClient.subscribeJob} subscription. */
+export interface JobLiveHandlers {
+  /** A fresh job snapshot pushed by the server. */
+  onJob: (job: JobResult) => void;
+  /** The server rejected the subscription or an error occurred. */
+  onError?: (error: Error) => void;
+  /** The socket closed (terminal status reached, or the connection dropped). */
+  onClose?: () => void;
 }
 
 /**
@@ -168,11 +188,13 @@ export class SvgrClient {
   private readonly baseUrl: string;
   private readonly networkClient: NetworkClient;
   private readonly retryConfig: RetryConfig | undefined;
+  private readonly getAuthToken: (() => Promise<string | null>) | undefined;
 
   constructor(config: SvgrClientConfig) {
     this.baseUrl = config.baseUrl;
     this.networkClient = config.networkClient;
     this.retryConfig = config.retry;
+    this.getAuthToken = config.getAuthToken;
   }
 
   /**
@@ -344,6 +366,108 @@ export class SvgrClient {
     }
 
     return response.data as BaseResponse<JobResult>;
+  }
+
+  /** Cancel a pending or running conversion job. */
+  async cancelJob(jobId: string): Promise<BaseResponse<JobResult>> {
+    const url = `${this.baseUrl}/api/v1/jobs/${jobId}/cancel`;
+    const response = await this.networkClient.post<BaseResponse<JobResult>>(
+      url,
+      {},
+    );
+
+    if (!response.ok) {
+      throw new SvgrApiError(
+        response.status,
+        (response.data as { error?: string })?.error ?? "Failed to cancel job",
+      );
+    }
+
+    return response.data as BaseResponse<JobResult>;
+  }
+
+  /**
+   * Subscribe to live updates for a job over a WebSocket.
+   *
+   * On open it authenticates in-band (first message carries the bearer token
+   * from `getAuthToken`), then the server pushes a fresh job snapshot on every
+   * status change and closes once the job reaches a terminal status. Returns an
+   * unsubscribe that closes the socket.
+   *
+   * A no-op (returning an unsubscribe that does nothing) when WebSocket is
+   * unavailable or no `getAuthToken` was configured — callers keep polling.
+   */
+  subscribeJob(jobId: string, handlers: JobLiveHandlers): () => void {
+    const getToken = this.getAuthToken;
+    if (typeof WebSocket === "undefined" || !getToken) {
+      return () => {};
+    }
+
+    const wsBase = this.baseUrl.replace(/^http/i, "ws");
+    const url = `${wsBase}/api/v1/jobs/${encodeURIComponent(jobId)}/live`;
+
+    let closed = false;
+    let socket: WebSocket;
+    try {
+      socket = new WebSocket(url);
+    } catch {
+      return () => {};
+    }
+
+    socket.onopen = () => {
+      void getToken()
+        .then((token) => {
+          if (closed) return;
+          if (!token) {
+            socket.close();
+            return;
+          }
+          try {
+            socket.send(JSON.stringify({ type: "auth", token }));
+          } catch {
+            /* socket already closing */
+          }
+        })
+        .catch(() => {
+          try {
+            socket.close();
+          } catch {
+            /* already closing */
+          }
+        });
+    };
+
+    socket.onmessage = (event: MessageEvent) => {
+      if (typeof event.data !== "string") return;
+      let msg: { type?: string; job?: JobResult; message?: string };
+      try {
+        msg = JSON.parse(event.data);
+      } catch {
+        return;
+      }
+      if (msg.type === "job" && msg.job) {
+        handlers.onJob(msg.job);
+      } else if (msg.type === "error") {
+        handlers.onError?.(new Error(msg.message ?? "Live subscription error"));
+      }
+    };
+
+    socket.onerror = () => {
+      handlers.onError?.(new Error("WebSocket error"));
+    };
+
+    socket.onclose = () => {
+      handlers.onClose?.();
+    };
+
+    return () => {
+      closed = true;
+      try {
+        socket.close();
+      } catch {
+        /* already closing */
+      }
+    };
   }
 
   /** List all conversion jobs for a given image. */
