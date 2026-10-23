@@ -1,6 +1,6 @@
 {
   "name": "@sudobility/svgr_client",
-  "version": "1.0.58",
+  "version": "1.0.59",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -29,27 +29,27 @@
     "verify": "bun run typecheck && bun run lint && bun run test:unit && bun run build"
   },
   "peerDependencies": {
-    "@sudobility/svgr_types": "^1.0.35",
-    "@sudobility/types": "^1.9.74",
+    "@sudobility/svgr_types": "^1.0.36",
+    "@sudobility/types": "^1.9.75",
     "@tanstack/react-query": "^5.0.0",
     "react": "^18.0.0 || ^19.0.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.38.0",
-    "@sudobility/di": "^1.5.75",
-    "@sudobility/svgr_types": "^1.0.35",
-    "@sudobility/types": "^1.9.74",
-    "@tanstack/react-query": "^5.0.0",
-    "@types/react": "^19.0.0",
-    "@typescript-eslint/eslint-plugin": "^8.46.2",
-    "@typescript-eslint/parser": "^8.46.2",
-    "eslint": "^9.38.0",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-prettier": "^5.5.4",
-    "prettier": "^3.6.2",
-    "react": "^19.0.0",
-    "typescript": "^5.9.3",
-    "vitest": "^3.2.4"
+    "@eslint/js": "~9.39.5",
+    "@sudobility/di": "^1.5.76",
+    "@sudobility/svgr_types": "^1.0.36",
+    "@sudobility/types": "^1.9.75",
+    "@tanstack/react-query": "~5.104.5",
+    "@types/react": "~19.3.0",
+    "@typescript-eslint/eslint-plugin": "~8.72.0",
+    "@typescript-eslint/parser": "~8.72.0",
+    "eslint": "~9.39.5",
+    "eslint-config-prettier": "~10.1.8",
+    "eslint-plugin-prettier": "~5.5.7",
+    "prettier": "~3.9.10",
+    "react": "~19.3.1",
+    "typescript": "~5.9.3",
+    "vitest": "~3.2.7"
   },
   "license": "BUSL-1.1",
   "repository": {

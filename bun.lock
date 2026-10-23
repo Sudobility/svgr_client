@@ -5,25 +5,25 @@
     "": {
       "name": "@sudobility/svgr_client",
       "devDependencies": {
-        "@eslint/js": "^9.38.0",
-        "@sudobility/di": "^1.5.75",
-        "@sudobility/svgr_types": "^1.0.35",
-        "@sudobility/types": "^1.9.74",
-        "@tanstack/react-query": "^5.0.0",
-        "@types/react": "^19.0.0",
-        "@typescript-eslint/eslint-plugin": "^8.46.2",
-        "@typescript-eslint/parser": "^8.46.2",
-        "eslint": "^9.38.0",
-        "eslint-config-prettier": "^10.1.8",
-        "eslint-plugin-prettier": "^5.5.4",
-        "prettier": "^3.6.2",
-        "react": "^19.0.0",
-        "typescript": "^5.9.3",
-        "vitest": "^3.2.4",
+        "@eslint/js": "~9.39.5",
+        "@sudobility/di": "^1.5.76",
+        "@sudobility/svgr_types": "^1.0.36",
+        "@sudobility/types": "^1.9.75",
+        "@tanstack/react-query": "~5.104.5",
+        "@types/react": "~19.3.0",
+        "@typescript-eslint/eslint-plugin": "~8.72.0",
+        "@typescript-eslint/parser": "~8.72.0",
+        "eslint": "~9.39.5",
+        "eslint-config-prettier": "~10.1.8",
+        "eslint-plugin-prettier": "~5.5.7",
+        "prettier": "~3.9.10",
+        "react": "~19.3.1",
+        "typescript": "~5.9.3",
+        "vitest": "~3.2.7",
       },
       "peerDependencies": {
-        "@sudobility/svgr_types": "^1.0.35",
-        "@sudobility/types": "^1.9.74",
+        "@sudobility/svgr_types": "^1.0.36",
+        "@sudobility/types": "^1.9.75",
         "@tanstack/react-query": "^5.0.0",
         "react": "^18.0.0 || ^19.0.0",
       },
@@ -360,11 +360,11 @@
 
     "@sinclair/typebox": ["@sinclair/typebox@0.27.12", "", {}, "sha512-hhyNJ+nbR6ZR7pToHvllEFun9TL0sbL+tk/ON75lo+Xas054uez98qRbsuNt7MBCyZKK4+8Yli/OAGZhmfBZ/g=="],
 
-    "@sudobility/di": ["@sudobility/di@1.5.75", "https://npm.pkg.github.com/download/@sudobility/di/1.5.75/ee40c5b0708cc57ef0ec9ed22091a34b07993bfb", { "peerDependencies": { "@notifee/react-native": ">=7.0.0", "@react-native-async-storage/async-storage": ">=1.19.0", "@react-native-community/netinfo": ">=9.0.0", "@react-native-firebase/analytics": ">=18.0.0", "@react-native-firebase/app": ">=18.0.0", "@react-native-firebase/messaging": ">=18.0.0", "@sudobility/types": "^1.9.74", "firebase": ">=11.0.0", "react": ">=18.0.0", "react-native": ">=0.70.0" } }, "sha512-6nUPfV3qqhX9jZCcsdzgxqWb2deuRXsJ2dScml9sjK8uv4cOgb06MRs3X/XeeL/nCX/AQliWc5LSZxkty4nW+Q=="],
+    "@sudobility/di": ["@sudobility/di@1.5.76", "https://npm.pkg.github.com/download/@sudobility/di/1.5.76/250da6bdb52319363d8e300263009d89f78daa47", { "peerDependencies": { "@notifee/react-native": ">=7.0.0", "@react-native-async-storage/async-storage": ">=1.19.0", "@react-native-community/netinfo": ">=9.0.0", "@react-native-firebase/analytics": ">=18.0.0", "@react-native-firebase/app": ">=18.0.0", "@react-native-firebase/messaging": ">=18.0.0", "@sudobility/types": "^1.9.75", "firebase": ">=11.0.0", "react": ">=18.0.0", "react-native": ">=0.70.0" } }, "sha512-a97vPvztD36ZIPXPkQCgXgvpyQAlQQGeu2vEhgnsmn3LhPikcJFK77NMrxr0BHLY+/RgbacgkyrGOWBDPt+LUg=="],
 
-    "@sudobility/svgr_types": ["@sudobility/svgr_types@1.0.35", "https://npm.pkg.github.com/download/@sudobility/svgr_types/1.0.35/db7996df1a8e72a9f096ea7d51f46d25b8e04f76", { "peerDependencies": { "@sudobility/types": "^1.9.74" } }, "sha512-rvyUG9X8TWietOXu6GypqWBuz27VYmCurxjChKLjrzhqYpkhNN/7ZUDjjqW/kK+is3oPpns0XIVoHSOgHeAwvw=="],
+    "@sudobility/svgr_types": ["@sudobility/svgr_types@1.0.36", "https://npm.pkg.github.com/download/@sudobility/svgr_types/1.0.36/0e825f0d8c7eb6ac91634801571fc30a4f3c789d", { "peerDependencies": { "@sudobility/types": "^1.9.75" } }, "sha512-M4RFfv2GECwDlMRVn0XPF00kca39x4TONJjZXcn7PvemSnAxMOpaUhfCpvFu4b/xHrVhKAKHQTPPxjBAR3+Zkw=="],
 
-    "@sudobility/types": ["@sudobility/types@1.9.74", "https://npm.pkg.github.com/download/@sudobility/types/1.9.74/f9ad864ba5d8d1097e7e48378ebee8aa7e129e88", {}, "sha512-jgt0F1r71qjFNiRNn/1YlL4JU65sjnzYd8Sfi+Y9z62Lu9VhIXeqWAH12u7/hmGPZqG3nxzn0V+s3sFkB1qWuQ=="],
+    "@sudobility/types": ["@sudobility/types@1.9.75", "https://npm.pkg.github.com/download/@sudobility/types/1.9.75/d041222e1a9c48b1857a25686361fa493265e572", {}, "sha512-c0IqHhNsyMxWFzv+sC8drTXid1s/yberzme5JJTYIR2CE+DxpnjFCyL0AIMKUwTQYhYKvRZG0JkWRFplirbBrw=="],
 
     "@tanstack/query-core": ["@tanstack/query-core@5.104.5", "", {}, "sha512-Q94gI8Opd+CbdVNOdj8ZCyV8WqLYitrDq1t96Xc8WZT6lY0r5iRnJLXYDxMex7EEf2v+mXvn4FcjaBKSxXZQ9A=="],
 
