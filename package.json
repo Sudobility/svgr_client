@@ -1,6 +1,6 @@
 {
   "name": "@sudobility/svgr_client",
-  "version": "1.0.54",
+  "version": "1.0.55",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -29,16 +29,16 @@
     "verify": "bun run typecheck && bun run lint && bun run test:unit && bun run build"
   },
   "dependencies": {
-    "@sudobility/svgr_types": "^1.0.32"
+    "@sudobility/svgr_types": "^1.0.33"
   },
   "peerDependencies": {
-    "@sudobility/types": "^1.9.68",
+    "@sudobility/types": "^1.9.72",
     "react": "^18.0.0 || ^19.0.0",
     "@tanstack/react-query": "^5.0.0"
   },
   "devDependencies": {
-    "@sudobility/di": "^1.5.70",
-    "@sudobility/types": "^1.9.68",
+    "@sudobility/di": "^1.5.73",
+    "@sudobility/types": "^1.9.72",
     "@eslint/js": "^9.38.0",
     "@tanstack/react-query": "^5.0.0",
     "@types/react": "^19.0.0",
@@ -55,6 +55,6 @@
   "license": "BUSL-1.1",
   "repository": {
     "type": "git",
-    "url": "https://github.com/johnqh/svgr_client.git"
+    "url": "https://github.com/Sudobility/svgr_client.git"
   }
 }
