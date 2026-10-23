@@ -7,7 +7,7 @@
       "devDependencies": {
         "@eslint/js": "^9.38.0",
         "@sudobility/di": "^1.5.75",
-        "@sudobility/svgr_types": "^1.0.34",
+        "@sudobility/svgr_types": "^1.0.35",
         "@sudobility/types": "^1.9.74",
         "@tanstack/react-query": "^5.0.0",
         "@types/react": "^19.0.0",
@@ -22,7 +22,7 @@
         "vitest": "^3.2.4",
       },
       "peerDependencies": {
-        "@sudobility/svgr_types": "^1.0.34",
+        "@sudobility/svgr_types": "^1.0.35",
         "@sudobility/types": "^1.9.74",
         "@tanstack/react-query": "^5.0.0",
         "react": "^18.0.0 || ^19.0.0",
@@ -362,7 +362,7 @@
 
     "@sudobility/di": ["@sudobility/di@1.5.75", "https://npm.pkg.github.com/download/@sudobility/di/1.5.75/ee40c5b0708cc57ef0ec9ed22091a34b07993bfb", { "peerDependencies": { "@notifee/react-native": ">=7.0.0", "@react-native-async-storage/async-storage": ">=1.19.0", "@react-native-community/netinfo": ">=9.0.0", "@react-native-firebase/analytics": ">=18.0.0", "@react-native-firebase/app": ">=18.0.0", "@react-native-firebase/messaging": ">=18.0.0", "@sudobility/types": "^1.9.74", "firebase": ">=11.0.0", "react": ">=18.0.0", "react-native": ">=0.70.0" } }, "sha512-6nUPfV3qqhX9jZCcsdzgxqWb2deuRXsJ2dScml9sjK8uv4cOgb06MRs3X/XeeL/nCX/AQliWc5LSZxkty4nW+Q=="],
 
-    "@sudobility/svgr_types": ["@sudobility/svgr_types@1.0.34", "https://npm.pkg.github.com/download/@sudobility/svgr_types/1.0.34/664879061a150a443a833acf34198e59c59e051c", { "peerDependencies": { "@sudobility/types": "^1.9.74" } }, "sha512-KzzF3Mcc0s1/4JLhgNh4PZpP7JmqWe6RnukRCTUUZC6aU6ITDzMhIkx5sRTX04H75LKm4hX9D0oQcR1FZvnUoQ=="],
+    "@sudobility/svgr_types": ["@sudobility/svgr_types@1.0.35", "https://npm.pkg.github.com/download/@sudobility/svgr_types/1.0.35/db7996df1a8e72a9f096ea7d51f46d25b8e04f76", { "peerDependencies": { "@sudobility/types": "^1.9.74" } }, "sha512-rvyUG9X8TWietOXu6GypqWBuz27VYmCurxjChKLjrzhqYpkhNN/7ZUDjjqW/kK+is3oPpns0XIVoHSOgHeAwvw=="],
 
     "@sudobility/types": ["@sudobility/types@1.9.74", "https://npm.pkg.github.com/download/@sudobility/types/1.9.74/f9ad864ba5d8d1097e7e48378ebee8aa7e129e88", {}, "sha512-jgt0F1r71qjFNiRNn/1YlL4JU65sjnzYd8Sfi+Y9z62Lu9VhIXeqWAH12u7/hmGPZqG3nxzn0V+s3sFkB1qWuQ=="],
 
