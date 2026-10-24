@@ -1,6 +1,6 @@
 {
   "name": "@sudobility/svgr_client",
-  "version": "1.0.60",
+  "version": "1.0.61",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -29,15 +29,15 @@
     "verify": "bun run typecheck && bun run lint && bun run test:unit && bun run build"
   },
   "peerDependencies": {
-    "@sudobility/svgr_types": "^1.0.37",
+    "@sudobility/svgr_types": "^1.0.38",
     "@sudobility/types": "^1.9.76",
     "@tanstack/react-query": "^5.0.0",
     "react": "^18.0.0 || ^19.0.0"
   },
   "devDependencies": {
     "@eslint/js": "~9.39.5",
-    "@sudobility/di": "^1.5.77",
-    "@sudobility/svgr_types": "^1.0.37",
+    "@sudobility/di": "^1.5.79",
+    "@sudobility/svgr_types": "^1.0.38",
     "@sudobility/types": "^1.9.76",
     "@tanstack/react-query": "~5.104.5",
     "@types/react": "~19.3.0",
