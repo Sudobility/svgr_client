@@ -1,6 +1,6 @@
 {
   "name": "@sudobility/svgr_client",
-  "version": "1.0.61",
+  "version": "1.0.62",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -35,21 +35,21 @@
     "react": "^18.0.0 || ^19.0.0"
   },
   "devDependencies": {
-    "@eslint/js": "~9.39.5",
-    "@sudobility/di": "^1.5.79",
+    "@eslint/js": "~10.0.1",
+    "@sudobility/di": "^1.5.81",
     "@sudobility/svgr_types": "^1.0.38",
     "@sudobility/types": "^1.9.76",
     "@tanstack/react-query": "~5.104.5",
     "@types/react": "~19.3.0",
     "@typescript-eslint/eslint-plugin": "~8.72.0",
     "@typescript-eslint/parser": "~8.72.0",
-    "eslint": "~9.39.5",
+    "eslint": "~10.13.0",
     "eslint-config-prettier": "~10.1.8",
     "eslint-plugin-prettier": "~5.5.7",
     "prettier": "~3.9.10",
     "react": "~19.3.1",
-    "typescript": "~5.9.3",
-    "vitest": "~3.2.7"
+    "typescript": "~6.0.3",
+    "vitest": "~4.1.12"
   },
   "license": "BUSL-1.1",
   "repository": {
