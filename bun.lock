@@ -6,9 +6,9 @@
       "name": "@sudobility/svgr_client",
       "devDependencies": {
         "@eslint/js": "~10.0.1",
-        "@sudobility/di": "^1.5.89",
-        "@sudobility/svgr_types": "^1.0.43",
-        "@sudobility/types": "^1.11.1",
+        "@sudobility/di": "^1.5.91",
+        "@sudobility/svgr_types": "^1.0.44",
+        "@sudobility/types": "^1.11.2",
         "@tanstack/react-query": "~5.104.5",
         "@types/react": "~19.3.0",
         "@typescript-eslint/eslint-plugin": "~8.72.0",
@@ -22,8 +22,8 @@
         "vitest": "~4.1.12",
       },
       "peerDependencies": {
-        "@sudobility/svgr_types": "^1.0.43",
-        "@sudobility/types": "^1.11.1",
+        "@sudobility/svgr_types": "^1.0.44",
+        "@sudobility/types": "^1.11.2",
         "@tanstack/react-query": "^5.0.0",
         "react": "^18.0.0 || ^19.0.0",
       },
@@ -368,11 +368,11 @@
 
     "@standard-schema/spec": ["@standard-schema/spec@1.1.0", "", {}, "sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w=="],
 
-    "@sudobility/di": ["@sudobility/di@1.5.89", "https://npm.pkg.github.com/download/@sudobility/di/1.5.89/d60dddcddab671f919b602a27885ab7d6f9c23da", { "peerDependencies": { "@notifee/react-native": ">=7.0.0", "@react-native-async-storage/async-storage": ">=1.19.0", "@react-native-community/netinfo": ">=9.0.0", "@react-native-firebase/analytics": ">=18.0.0", "@react-native-firebase/app": ">=18.0.0", "@react-native-firebase/messaging": ">=18.0.0", "@sudobility/types": "^1.11.1", "firebase": ">=11.0.0", "react": ">=18.0.0", "react-native": ">=0.70.0" } }, "sha512-wppiHLJNJXl8SRdKy5D27RA7EqF3ZB15GviC+MDJFTnSHgVace/TNWx78JaGumznQY7bQtLxpdsqNC2BkzZUBw=="],
+    "@sudobility/di": ["@sudobility/di@1.5.91", "https://npm.pkg.github.com/download/@sudobility/di/1.5.91/5bdccb64b98d44119f84f0148e2a8c36a0d2e03a", { "peerDependencies": { "@notifee/react-native": ">=7.0.0", "@react-native-async-storage/async-storage": ">=1.19.0", "@react-native-community/netinfo": ">=9.0.0", "@react-native-firebase/analytics": ">=18.0.0", "@react-native-firebase/app": ">=18.0.0", "@react-native-firebase/messaging": ">=18.0.0", "@sudobility/types": "^1.11.2", "firebase": ">=11.0.0", "react": ">=18.0.0", "react-native": ">=0.70.0" } }, "sha512-9iC5Ug9SiO4bm+RvuvhHRu1WaxWb1XMkM0atsSdshTD3lh4DHZqWuTa7khScWwljaiuV7E/8YRVnxIkHoz2+aQ=="],
 
-    "@sudobility/svgr_types": ["@sudobility/svgr_types@1.0.43", "https://npm.pkg.github.com/download/@sudobility/svgr_types/1.0.43/ead56382b92d9862496a77105843e95b0ff4f3df", { "peerDependencies": { "@sudobility/types": "^1.11.1" } }, "sha512-9Mw0eLOQeIIuLDZZ08Gpkj/7L5OFMQjicQEDchqDYmxZpZPYxUw7AgTGNRf3HHKDbgHTicr2d1zvOV1u9mioiA=="],
+    "@sudobility/svgr_types": ["@sudobility/svgr_types@1.0.44", "https://npm.pkg.github.com/download/@sudobility/svgr_types/1.0.44/eeaafbf70c71545c6efb69a3ec640f981fd8956d", { "peerDependencies": { "@sudobility/types": "^1.11.2" } }, "sha512-82IxBxLw7XsfYqH841jrsq5Kp2C6L/wmfUOzhYi+jfFk6DV8LjWMbI/+y9YWiwnF8u1L/UbOXFJN/L8WiucA+w=="],
 
-    "@sudobility/types": ["@sudobility/types@1.11.1", "https://npm.pkg.github.com/download/@sudobility/types/1.11.1/dc6bf578b6f618fab74a7a60ed064d80b18782c2", {}, "sha512-NPECPlRPj1IavT7pu3KtIFB6rDfs30AgD89pw/qrNe1+Tm0FFLkIfqxE/y8+uajm85um+FcoYHn/hY70Px9uow=="],
+    "@sudobility/types": ["@sudobility/types@1.11.2", "https://npm.pkg.github.com/download/@sudobility/types/1.11.2/d6d0b1809eaca31ef737646032cc431111b58a49", {}, "sha512-gg+bPtcOGNETDt9oNdjcn7R22EfFWmRxMOhj0ADwulBJ9tJ4NaMaXkrTtkWF+figSDZqmD9a9kodgOHseq8gsQ=="],
 
     "@tanstack/query-core": ["@tanstack/query-core@5.104.5", "", {}, "sha512-Q94gI8Opd+CbdVNOdj8ZCyV8WqLYitrDq1t96Xc8WZT6lY0r5iRnJLXYDxMex7EEf2v+mXvn4FcjaBKSxXZQ9A=="],
 

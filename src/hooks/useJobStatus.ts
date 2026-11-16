@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import type { BaseResponse, JobResult } from "@sudobility/svgr_types";
+import type { BaseResponse } from "@sudobility/types";
+import type { JobResult } from "@sudobility/svgr_types";
 import type { SvgrClient } from "../network/SvgrClient.js";
 import { svgrKeys } from "./query-keys.js";
 
