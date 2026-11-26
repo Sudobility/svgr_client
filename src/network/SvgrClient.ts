@@ -102,10 +102,7 @@ const DEFAULT_RETRYABLE_STATUSES = [408, 429, 500, 502, 503, 504];
  * proper platform `Blob` on every runtime. On the web this path is equivalent
  * to the direct constructor.
  */
-async function bufferToBlob(
-  buffer: ArrayBuffer,
-  mimeType: string,
-): Promise<Blob> {
+function bufferToDataUrl(buffer: ArrayBuffer, mimeType: string): string {
   const bytes = new Uint8Array(buffer);
   // Chunked to avoid a call-stack overflow from spreading a large array.
   let binary = "";
@@ -113,10 +110,27 @@ async function bufferToBlob(
   for (let i = 0; i < bytes.length; i += chunkSize) {
     binary += String.fromCharCode(...bytes.subarray(i, i + chunkSize));
   }
-  const dataUrl = `data:${mimeType};base64,${btoa(binary)}`;
-  const response = await fetch(dataUrl);
+  return `data:${mimeType};base64,${btoa(binary)}`;
+}
+
+async function bufferToBlob(
+  buffer: ArrayBuffer,
+  mimeType: string,
+): Promise<Blob> {
+  const response = await fetch(bufferToDataUrl(buffer, mimeType));
   return response.blob();
 }
+
+/**
+ * React Native builds multipart bodies differently from the web: its `FormData`
+ * cannot serialize a web `Blob` into a file part (the bytes and the filename
+ * argument are dropped), so the server receives no `image` field. RN instead
+ * expects the `{ uri, name, type }` file descriptor, which is detected here.
+ */
+const IS_REACT_NATIVE =
+  typeof globalThis !== "undefined" &&
+  (globalThis as { navigator?: { product?: string } }).navigator?.product ===
+    "ReactNative";
 
 /**
  * Error thrown when the SVGR API returns a non-successful HTTP response.
@@ -315,8 +329,19 @@ export class SvgrClient {
         filename: string;
         mimeType: string;
       };
-      const blob = await bufferToBlob(buffer, mimeType);
-      formData.append("image", blob, filename);
+      if (IS_REACT_NATIVE) {
+        // A `data:` URI carries the bytes without touching the filesystem; RN's
+        // networking reads it and emits a proper `image` file part (filename
+        // from `name`, content type from `type`).
+        formData.append("image", {
+          uri: bufferToDataUrl(buffer, mimeType),
+          name: filename,
+          type: mimeType,
+        } as unknown as Blob);
+      } else {
+        const blob = await bufferToBlob(buffer, mimeType);
+        formData.append("image", blob, filename);
+      }
     }
 
     const url = `${this.baseUrl}/api/v1/images/upload`;
